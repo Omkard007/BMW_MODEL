@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: #000;
+}
+
+.app canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.color-panel {
+  position: fixed;
+  top: clamp(12px, 3vw, 24px);
+  left: clamp(12px, 3vw, 24px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.5vw, 12px);
+  padding: clamp(6px, 1.2vw, 10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(8, 8, 8, 0.42);
+  backdrop-filter: blur(14px);
+}
+
+.color-button {
+  width: clamp(28px, 6vw, 40px);
+  height: clamp(28px, 6vw, 40px);
+  min-width: 28px;
+  min-height: 28px;
+  border: clamp(1.5px, 0.3vw, 2.5px) solid rgba(255, 255, 255, 0.62);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.38);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+  flex-shrink: 0;
+}
+
+.color-button:hover,
+.color-button.active {
+  border-color: #ffffff;
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.18),
+    0 10px 22px rgba(0, 0, 0, 0.45);
+}
+
+.color-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* Mobile: Small phones (< 480px) */
+@media (max-width: 480px) {
+  .color-panel {
+    top: 12px;
+    left: 12px;
+    flex-direction: row;
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .color-button {
+    width: 28px;
+    height: 28px;
+    border-width: 1.5px;
+  }
+
+  .color-button:hover,
+  .color-button.active {
+    transform: scale(1.15);
+  }
+}
+
+/* Tablet: Medium screens (480px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .color-panel {
+    top: 16px;
+    left: 16px;
+    flex-direction: row;
+  }
+
+  .color-button {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Large screens (> 768px) */
+@media (min-width: 769px) {
+  .color-button:hover,
+  .color-button.active {
+    transform: scale(1.12);
+  }
+}
